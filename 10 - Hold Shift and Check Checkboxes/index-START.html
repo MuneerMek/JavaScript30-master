@@ -101,19 +101,18 @@
       let lastChecked;
 
       function handleCheck(e) {
-        let inBetween = false;
+        let isBetween = false;
+
         if (e.shiftKey && this.checked) {
           checkBoxes.forEach((box) => {
-            console.log(box);
             if (box === this || box === lastChecked) {
-              inBetween = !inBetween;
+              isBetween = !isBetween;
             }
-            if (inBetween) {
+            if (isBetween) {
               box.checked = true;
             }
           });
         }
-
         lastChecked = this;
       }
 
