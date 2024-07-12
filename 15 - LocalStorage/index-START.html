@@ -46,7 +46,7 @@
   <script>
     const addItems = document.querySelector(".add-items");
     const itemsList = document.querySelector(".plates");
-    const items = [];
+    const items = JSON.parse(localStorage.getItem('items')) || [];
 
     function addItem(e) {
       // Prevents refresh upon submitting form
@@ -75,9 +75,22 @@
       }).join('');
     }
 
-    addItems.addEventListener("submit", addItem);
+    function toggleDone(e) {
+      if (!e.target.matches('input')) return; // Skips this, unless it's an input. Filters the event listener.
+      const el = e.target;
+      const index = el.dataset.index;
+      items[index].done = !items[index].done;
+      // Set raw string data of objects array into local storage
+      localStorage.setItem('items', JSON.stringify(items))
+      populateList(items, itemsList);
+    }
 
-    populateList()
+    addItems.addEventListener("submit", addItem);
+    // Event Delegation to parent element for child Input checkboxes
+    itemsList.addEventListener('click', toggleDone)
+    // Check for local storage on boot
+    populateList(items, itemsList);
+
   </script>
 </body>
 
