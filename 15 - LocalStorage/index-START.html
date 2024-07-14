@@ -97,7 +97,29 @@
       platesList.innerHTML = ''
     }
 
+    function toggleAll(plates) {
+      plates.forEach(plate => {
+        plate.done = true;
+      });
+      // Set raw string data of objects array into local storage
+      localStorage.setItem('items', JSON.stringify(items))
+      populateList(items, itemsList);
+    }
+
+    function untoggleAll(plates) {
+      plates.forEach(plate => {
+        plate.done = false;
+      });
+      // Set raw string data of objects array into local storage
+      localStorage.setItem('items', JSON.stringify(items))
+      populateList(items, itemsList);
+    }
+
     reset.addEventListener('click', () => resetStorage(itemsList));
+
+    checkAll.addEventListener('click', () => toggleAll(items));
+
+    uncheckAll.addEventListener('click', () => untoggleAll(items));
 
     addItems.addEventListener("submit", addItem);
     // Event Delegation to parent element for child Input checkboxes
