@@ -40,6 +40,7 @@
   <script>
     const hero = document.querySelector('.hero')
     const text = hero.querySelector('h1')
+    const walk = 750; // 500px
 
     function shadow(e) {
       const { offsetHeight: height, offsetWidth: width } = hero;
@@ -50,9 +51,18 @@
         y = y + e.target.offsetTop
       }
 
+      const xWalk = Math.round((x / width * walk) - (walk / 2));
+      const yWalk = Math.round((y / width * walk) - (walk / 2));
+
       text.style.textShadow = `
-      10px 10px 0 rgba(155, 0, 0, 1),
-      10px 10px 0 rgba(0, 0, 0, 1)
+      ${xWalk}px 10px 0 rgba(63, 0, 0, 1),
+      ${-xWalk}px 10px 0 rgba(125, 0, 0, 1),
+      10px ${yWalk}px 0 rgba(188, 0, 0, 1),
+      10px ${-yWalk}px 0 rgba(250, 0, 0, 1),
+      ${xWalk}px ${yWalk}px 0 rgba(63, 25, 221, .2),
+      ${-xWalk}px ${yWalk}px 0 rgba(125, 25, 221, .2),
+      ${xWalk}px ${-yWalk}px 0 rgba(188, 25, 221, .2),
+      ${-xWalk}px ${-yWalk}px 0 rgba(250, 25, 221, .2)
       `
 
       console.log(x, y);
