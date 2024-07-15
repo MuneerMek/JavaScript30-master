@@ -10,7 +10,7 @@
 <body>
 
   <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
+    <h1 contenteditable>🔥</h1>
   </div>
 
   <style>
@@ -52,17 +52,17 @@
       }
 
       const xWalk = Math.round((x / width * walk) - (walk / 2));
-      const yWalk = Math.round((y / width * walk) - (walk / 2));
+      const yWalk = Math.round((y / height * walk) - (walk / 2));
 
       text.style.textShadow = `
-      ${xWalk}px 10px 0 rgba(63, 0, 0, 1),
-      ${-xWalk}px 10px 0 rgba(125, 0, 0, 1),
-      10px ${yWalk}px 0 rgba(188, 0, 0, 1),
-      10px ${-yWalk}px 0 rgba(250, 0, 0, 1),
-      ${xWalk}px ${yWalk}px 0 rgba(63, 25, 221, .2),
-      ${-xWalk}px ${yWalk}px 0 rgba(125, 25, 221, .2),
-      ${xWalk}px ${-yWalk}px 0 rgba(188, 25, 221, .2),
-      ${-xWalk}px ${-yWalk}px 0 rgba(250, 25, 221, .2)
+      ${xWalk}px 10px 0 rgba(63, 20, 20, .5),
+      ${-xWalk}px 10px 0 rgba(125, 20, 20, .5),
+      10px ${yWalk}px 0 rgba(188, 20, 20, .5),
+      10px ${-yWalk}px 0 rgba(250, 20, 20, .5),
+      ${xWalk - 200}px ${yWalk - 200}px 0 rgba(63, 25, 221, .25),
+      ${-xWalk + 200}px ${yWalk - 200}px 0 rgba(125, 25, 221, .25),
+      ${xWalk - 200}px ${-yWalk + 200}px 0 rgba(188, 25, 221, .25),
+      ${-xWalk + 200}px ${-yWalk + 200}px 0 rgba(250, 25, 221, .25)
       `
 
       console.log(x, y);
